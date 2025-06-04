@@ -59,32 +59,32 @@ async function main() {
   console.log(`Config created successfully! ${configKey.publicKey.toString()}`);
   console.log(`Transaction: https://solscan.io/tx/${createConfigSignature}`);
 
-  // Wait for config key creation to be confirmed and finalized
-  await connection.confirmTransaction(createConfigSignature, "finalized");
+  // // Wait for config key creation to be confirmed and finalized
+  // await connection.confirmTransaction(createConfigSignature, "finalized");
 
-  // Step 2: Create Base Mint Token Pool
-  const baseMint = Keypair.generate();
+  // // Step 2: Create Base Mint Token Pool
+  // const baseMint = Keypair.generate();
 
-  const createPoolTx = await client.pool.createPool({
-    ...tokenParams,
-    config: configKey.publicKey,
-    baseMint: baseMint.publicKey,
-    payer: wallet.publicKey,
-    poolCreator: wallet.publicKey,
-  });
+  // const createPoolTx = await client.pool.createPool({
+  //   ...tokenParams,
+  //   config: configKey.publicKey,
+  //   baseMint: baseMint.publicKey,
+  //   payer: wallet.publicKey,
+  //   poolCreator: wallet.publicKey,
+  // });
 
-  const createPoolSignature = await sendAndConfirmTransaction(
-    connection,
-    createPoolTx,
-    [wallet, baseMint, wallet],
-    {
-      commitment: "confirmed",
-      skipPreflight: true,
-    }
-  );
-  console.log(`Generated base mint: ${baseMint.publicKey.toString()}`);
-  console.log(`Transaction: https://solscan.io/tx/${createPoolSignature}`);
-  console.log(`Trade on Jup Pro: https://jup.ag/tokens/${baseMint.publicKey.toString()}`);
+  // const createPoolSignature = await sendAndConfirmTransaction(
+  //   connection,
+  //   createPoolTx,
+  //   [wallet, baseMint, wallet],
+  //   {
+  //     commitment: "confirmed",
+  //     skipPreflight: true,
+  //   }
+  // );
+  // console.log(`Generated base mint: ${baseMint.publicKey.toString()}`);
+  // console.log(`Transaction: https://solscan.io/tx/${createPoolSignature}`);
+  // console.log(`Trade on Jup Pro: https://jup.ag/tokens/${baseMint.publicKey.toString()}`);
 }
 
 main()
