@@ -7,9 +7,12 @@ import {
   TokenDecimal,
   TokenType,
 } from "@meteora-ag/dynamic-bonding-curve-sdk";
+import { NATIVE_MINT } from "@solana/spl-token";
 import { PublicKey } from "@solana/web3.js";
 
-export const quoteMint = new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"); // for USDC
+export const quoteMint = new PublicKey(
+  "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+);
 
 export const configKeyParams: BuildCurveWithMarketCapParam = {
   leftover: 0,

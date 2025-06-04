@@ -18,7 +18,7 @@
     "tsx": "^4.19.4"
   },
   "dependencies": {
-    "@meteora-ag/dynamic-bonding-curve-sdk": "^1.1.9",
+    "@meteora-ag/dynamic-bonding-curve-sdk": "^1.2.1",
     "@solana/spl-token": "^0.4.13",
     "@solana/web3.js": "^1.98.2",
     "bn.js": "^5.2.2",
