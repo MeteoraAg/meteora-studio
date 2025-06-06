@@ -11,14 +11,22 @@ import {
 } from "@meteora-ag/dynamic-bonding-curve-sdk";
 import { NATIVE_MINT } from "@solana/spl-token";
 
+export const tokenParams = {
+  totalTokenSupply: 1000000000,
+  tokenBaseDecimal: TokenDecimal.SIX,
+  name: "PUMP IT Token",
+  symbol: "PUMP",
+  uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgk7EaZ4MxetCM1IB2B8z0MFJZg8IOn8AcMw&s",
+};
+
 export const quoteMint = NATIVE_MINT;
 
 export const configKeyParams: BuildCurveWithMarketCapParam = {
-  totalTokenSupply: 1000000000,
+  totalTokenSupply: tokenParams.totalTokenSupply,
   initialMarketCap: 23,
   migrationMarketCap: 395,
   migrationOption: MigrationOption.MET_DAMM_V2,
-  tokenBaseDecimal: TokenDecimal.SIX,
+  tokenBaseDecimal: tokenParams.tokenBaseDecimal,
   tokenQuoteDecimal: TokenDecimal.NINE,
   lockedVestingParam: {
     totalLockedVestingAmount: 0,
@@ -50,10 +58,4 @@ export const configKeyParams: BuildCurveWithMarketCapParam = {
     feePercentage: 0,
     creatorFeePercentage: 0,
   },
-};
-
-export const tokenParams = {
-  name: "PUMP IT Token",
-  symbol: "PUMP",
-  uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgk7EaZ4MxetCM1IB2B8z0MFJZg8IOn8AcMw&s",
 };

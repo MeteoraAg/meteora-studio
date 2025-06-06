@@ -11,17 +11,20 @@ import {
 import { NATIVE_MINT } from '@solana/spl-token'
 import BN from 'bn.js'
 import bs58 from 'bs58'
-
+import "dotenv/config";
 async function swapBuy() {
     console.log('Starting pool creation and swap process...')
 
-    const WALLET_PRIVATE_KEY = ""
+    const WALLET_PRIVATE_KEY = process.env.PRIVATE_KEY;
+    if (!WALLET_PRIVATE_KEY) {
+        throw new Error("PRIVATE_KEY is not set");
+    }
     const walletSecretKey = bs58.decode(WALLET_PRIVATE_KEY);
     const wallet = Keypair.fromSecretKey(walletSecretKey);
     console.log("Wallet public key:", wallet.publicKey.toBase58());
 
     const connection = new Connection(
-        'https://api.mainnet-beta.solana.com',
+        process.env.RPC_URL || 'https://api.mainnet-beta.solana.com',
         'confirmed'
     )
     const baseMint = new PublicKey('')

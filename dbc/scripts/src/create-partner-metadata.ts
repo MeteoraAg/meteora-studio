@@ -1,12 +1,16 @@
 import { Connection, Keypair, sendAndConfirmTransaction } from '@solana/web3.js'
 import { DynamicBondingCurveClient } from '@meteora-ag/dynamic-bonding-curve-sdk'
 import bs58 from 'bs58'
+import "dotenv/config";
 
 /**
  * Create a partner metadata for the dynamic bonding curve
  */
 async function createPartnerMetadata() {
-    const PAYER_PRIVATE_KEY = "";
+    const PAYER_PRIVATE_KEY = process.env.PRIVATE_KEY;
+    if (!PAYER_PRIVATE_KEY) {
+        throw new Error("PRIVATE_KEY is not set");
+    }
     const payerSecretKey = bs58.decode(PAYER_PRIVATE_KEY);
     const payer = Keypair.fromSecretKey(payerSecretKey);
     console.log("Payer public key:", payer.publicKey.toBase58());
@@ -17,8 +21,8 @@ async function createPartnerMetadata() {
     console.log("Partner public key:", partner.publicKey.toBase58());
 
     const connection = new Connection(
-        'https://api.mainnet-beta.solana.com',
-        'confirmed'
+        process.env.RPC_URL || 'https://api.mainnet-beta.solana.com',
+          'confirmed'
     )
 
     const createPartnerMetadataParam = {
@@ -51,7 +55,7 @@ async function createPartnerMetadata() {
 
         console.log(`Partner metadata created successfully!`)
         console.log(
-            `Transaction: https://solscan.io/tx/${signature}?cluster=devnet`
+            `Transaction: https://solscan.io/tx/${signature}`
         )
     } catch (error) {
         console.error('Failed to create partner metadata:', error)

@@ -5,17 +5,15 @@ import {
 } from '@meteora-ag/dynamic-bonding-curve-sdk'
 import { NATIVE_MINT } from '@solana/spl-token'
 import BN from 'bn.js'
+import "dotenv/config";
 
 async function swapQuote() {
     const connection = new Connection(
-        'https://api.mainnet-beta.solana.com',
+        process.env.RPC_URL || 'https://api.mainnet-beta.solana.com',
         'confirmed'
     )
 
-    const baseMint = new PublicKey(
-        ''
-    )
-
+    const baseMint = new PublicKey('')
     const config = new PublicKey('')
 
     try {

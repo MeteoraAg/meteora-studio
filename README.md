@@ -33,13 +33,11 @@ To get started with launching your token, check out our [Quickstart](dbc/quickst
 Find the type of project you want to launch here
 
 1. [Quickstart](dbc/quickstart/README.md) - A quick and easy way to launch your token.
-
   
+2. [Scripts](dbc/script/README.md) - Some tools to help launch and buy tokens
   
 
 ## Repository Structure
-
-  
 
 ```bash
 

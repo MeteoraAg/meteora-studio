@@ -6,9 +6,13 @@ import {
 } from '@solana/web3.js'
 import { DynamicBondingCurveClient } from '@meteora-ag/dynamic-bonding-curve-sdk'
 import bs58 from 'bs58'
+import "dotenv/config";
 
 async function createPool() {
-  const PAYER_PRIVATE_KEY = "";
+  const PAYER_PRIVATE_KEY = process.env.PRIVATE_KEY;
+  if (!PAYER_PRIVATE_KEY) {
+    throw new Error("PRIVATE_KEY is not set");
+  }
   const payerSecretKey = bs58.decode(PAYER_PRIVATE_KEY);
   const payer = Keypair.fromSecretKey(payerSecretKey);
   console.log("Payer public key:", payer.publicKey.toBase58());
@@ -19,7 +23,7 @@ async function createPool() {
   console.log("Pool creator public key:", poolCreator.publicKey.toBase58());
 
   const connection = new Connection(
-      'https://api.mainnet-beta.solana.com',
+    process.env.RPC_URL || 'https://api.mainnet-beta.solana.com',
       'confirmed'
   )
 

@@ -35,8 +35,19 @@ Edit `tokenParams` which includes:
   - Token name
   - Token symbol
   - Token URI (image)
+  - Token supply
+  - Token decimal 
 
+For more complex launches, edit the launch params:
 
+Edit `configKeyParams` which includes:
+  - Initial and migration market cap
+  - Vest and cliff params
+  - Fee scheduler params
+  - Activation type
+  - Creator and Partner LP
+
+To read more about the lauch params, visit [DBC Docs](https://docs.meteora.ag/product-overview/dynamic-bonding-curve-dbc-overview/customizable-pool-configuration)
 
 6. Run the script to launch a token
 

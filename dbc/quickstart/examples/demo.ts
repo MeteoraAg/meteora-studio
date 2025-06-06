@@ -13,15 +13,24 @@ import {
   import { PublicKey } from "@solana/web3.js";
   
   export const quoteMint = new PublicKey(
-    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v" // USDC
   );
   
-  export const configKeyParams: BuildCurveWithMarketCapParam = {
+  export const tokenParams = {
     totalTokenSupply: 1000000000,
+    tokenBaseDecimal: TokenDecimal.SIX,
+    name: "Moon Token",
+    symbol: "MOON",
+    uri: "https://i.pinimg.com/736x/9b/80/f6/9b80f613d125c9efd816d0be243aa1c0.jpg",
+  };
+  
+
+  export const configKeyParams: BuildCurveWithMarketCapParam = {
+    totalTokenSupply: tokenParams.totalTokenSupply,
     initialMarketCap: 50,
     migrationMarketCap: 100,
     migrationOption: MigrationOption.MET_DAMM_V2,
-    tokenBaseDecimal: TokenDecimal.SIX,
+    tokenBaseDecimal: tokenParams.tokenBaseDecimal,
     tokenQuoteDecimal: TokenDecimal.SIX, // TokenDecimal.SIX (for USDC)
     lockedVestingParam: {
       totalLockedVestingAmount: 100000000,
@@ -53,11 +62,5 @@ import {
       feePercentage: 0,
       creatorFeePercentage: 0,
     },
-  };
-  
-  export const tokenParams = {
-    name: "Moon Token",
-    symbol: "MOON",
-    uri: "https://i.pinimg.com/736x/9b/80/f6/9b80f613d125c9efd816d0be243aa1c0.jpg",
   };
   

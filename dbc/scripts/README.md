@@ -28,15 +28,34 @@ This folder contains scripts for interacting with Meteora's Dynamic Bonding Curv
 
 ## Getting Started
 
-### Install dependencies
+1. Clone the repository
+
+```bash
+git clone https://github.com/MeteoraAg/meteora-studio.git
+```
+
+2. Change directory to the `dbc/scripts` folder
+
+```bash
+cd meteora-studio/dbc/scripts
+```
+
+3. Copy `.env.example` file and add your private key and RPC URL into .env (RPC is optional but highly encouraged)
+
+```bash
+cp .env.example .env
+```
+
+4. Install dependencies
 
 ```bash
 npm install
 ```
 
-### Run the examples
+5. Run the examples
 
 ```bash
 npm run <file-name>
 # e.g. npm run create-config
 ```
+
