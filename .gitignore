@@ -1,4 +1,12 @@
 # dbc
+dbc/quicklaunch/node_modules
+dbc/quicklaunch/package-lock.json
+dbc/quicklaunch/.env
+
 dbc/quickstart/node_modules
 dbc/quickstart/package-lock.json
 dbc/quickstart/.env
+
+dbc/scripts/node_modules
+dbc/scripts/package-lock.json
+dbc/scripts/.env

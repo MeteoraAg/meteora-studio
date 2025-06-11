@@ -1,0 +1,37 @@
+{
+    "name": "meteora-dbc-examples",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "create-config": "tsx src/create-config.ts",
+        "create-pool": "tsx src/create-pool.ts",
+        "create-partner-metadata": "tsx src/create-partner-metadata.ts",
+        "simulate-curve": "tsx src/simulate-curve.ts",
+        "swap-buy": "tsx src/swap-buy.ts",
+        "swap-quote": "tsx src/swap-quote.ts",
+        "migrate-to-damm-v1": "tsx src/migrate-to-damm-v1.ts",
+        "migrate-to-damm-v2": "tsx src/migrate-to-damm-v2.ts"
+    },
+    "keywords": [],
+    "author": "@dannweeeee",
+    "license": "ISC",
+    "description": "This folder contains examples for interacting with Meteora's Dynamic Bonding Curve.",
+    "dependencies": {
+        "@coral-xyz/anchor": "^0.31.1",
+        "@solana/spl-token": "^0.4.13",
+        "@solana/web3.js": "^1.98.2",
+        "bn.js": "^5.2.1",
+        "bs58": "^6.0.0",
+        "decimal.js": "^10.5.0",
+        "dotenv": "^16.5.0",
+        "jito-ts": "latest",
+        "@meteora-ag/dynamic-bonding-curve-sdk": "1.2.3"
+
+    },
+    "devDependencies": {
+        "@types/bn.js": "^5.1.6",
+        "@types/decimal.js": "^7.4.3",
+        "tsx": "^4.19.3"
+    },
+    "type": "commonjs"
+}

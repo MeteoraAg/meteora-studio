@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+      "target": "es2020",
+      "module": "esnext",
+      "strict": true,
+      "outDir": "./dist"
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "dist"]
+  }
+  

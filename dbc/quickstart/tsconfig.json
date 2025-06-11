@@ -13,6 +13,6 @@
       "skipLibCheck": true,
       "resolveJsonModule": true
     },
-    "include": ["src/**/*", "config.ts"]
+    "include": ["src/**/*", "examples/**/*"]
   }
   
