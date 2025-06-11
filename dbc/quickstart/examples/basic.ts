@@ -2,60 +2,73 @@ import {
   ActivationType,
   BuildCurveWithMarketCapParam,
   CollectFeeMode,
-  FeeSchedulerMode,
   MigrationFeeOption,
   MigrationOption,
   TokenDecimal,
   TokenType,
-  TokenUpdateAuthorityOption,
 } from "@meteora-ag/dynamic-bonding-curve-sdk";
 import { NATIVE_MINT } from "@solana/spl-token";
+import { PublicKey } from "@solana/web3.js";
 
-export const tokenParams = {
-  totalTokenSupply: 1000000000,
-  tokenBaseDecimal: TokenDecimal.SIX,
-  name: "PUMP IT Token",
-  symbol: "PUMP",
-  uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgk7EaZ4MxetCM1IB2B8z0MFJZg8IOn8AcMw&s",
+export const quoteMint = new PublicKey(
+  "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+);
+
+export const TOTAL_TOKEN_SUPPLY = 100_000_000;
+
+export const configKeyParams = (
+  initialMarketCap: number,
+  migrationMarketCap: number
+): BuildCurveWithMarketCapParam => {
+  return {
+    leftover: 0,
+    dynamicFeeEnabled: false,
+    totalTokenSupply: TOTAL_TOKEN_SUPPLY,
+    initialMarketCap: initialMarketCap,
+    migrationMarketCap: migrationMarketCap,
+    migrationOption: MigrationOption.MET_DAMM_V2,
+    tokenBaseDecimal: TokenDecimal.SIX,
+    tokenQuoteDecimal: TokenDecimal.SIX,
+    collectFeeMode: CollectFeeMode.OnlyQuote,
+    activationType: ActivationType.Slot,
+    tokenType: TokenType.SPL,
+    partnerLockedLpPercentage: 0,
+    partnerLpPercentage: 100,
+    creatorLockedLpPercentage: 0,
+    creatorLpPercentage: 0,
+    migrationFeeOption: MigrationFeeOption.FixedBps100,
+    creatorTradingFeePercentage: 50,
+    lockedVestingParam: {
+      totalLockedVestingAmount: 10_000_000,
+      cliffUnlockAmount: 10_000_000,
+      numberOfVestingPeriod: 1,
+      totalVestingDuration: 1,
+      cliffDurationFromMigrationTime: 3_1536_000, // 12 months - 365 * 24 * 60 * 60
+    },
+    // lockedVestingParam: {
+    //   totalLockedVestingAmount: 0,
+    //   cliffUnlockAmount: 0,
+    //   numberOfVestingPeriod: 0,
+    //   totalVestingDuration: 0,
+    //   cliffDurationFromMigrationTime: 0,
+    // },
+    feeSchedulerParam: {
+      totalDuration: 0,
+      endingFeeBps: 100,
+      feeSchedulerMode: 0,
+      startingFeeBps: 100,
+      numberOfPeriod: 0,
+    },
+    tokenUpdateAuthority: 1,
+    migrationFee: {
+      feePercentage: 0,
+      creatorFeePercentage: 0,
+    },
+  };
 };
 
-export const quoteMint = NATIVE_MINT;
-
-export const configKeyParams: BuildCurveWithMarketCapParam = {
-  totalTokenSupply: tokenParams.totalTokenSupply,
-  initialMarketCap: 23,
-  migrationMarketCap: 395,
-  migrationOption: MigrationOption.MET_DAMM_V2,
-  tokenBaseDecimal: tokenParams.tokenBaseDecimal,
-  tokenQuoteDecimal: TokenDecimal.NINE,
-  lockedVestingParam: {
-    totalLockedVestingAmount: 0,
-    numberOfVestingPeriod: 0,
-    cliffUnlockAmount: 0,
-    totalVestingDuration: 0,
-    cliffDurationFromMigrationTime: 0,
-  },
-  feeSchedulerParam: {
-    startingFeeBps: 100,
-    endingFeeBps: 100,
-    numberOfPeriod: 0,
-    totalDuration: 0,
-    feeSchedulerMode: FeeSchedulerMode.Linear,
-  },
-  dynamicFeeEnabled: true,
-  activationType: ActivationType.Slot,
-  collectFeeMode: CollectFeeMode.OnlyQuote,
-  migrationFeeOption: MigrationFeeOption.FixedBps100,
-  tokenType: TokenType.SPL,
-  partnerLpPercentage: 0,
-  creatorLpPercentage: 0,
-  partnerLockedLpPercentage: 50,
-  creatorLockedLpPercentage: 50,
-  creatorTradingFeePercentage: 50,
-  leftover: 0,
-  tokenUpdateAuthority: TokenUpdateAuthorityOption.Immutable,
-  migrationFee: {
-    feePercentage: 0,
-    creatorFeePercentage: 0,
-  },
+export const tokenParams = {
+  name: "Moon Token",
+  symbol: "MOON",
+  uri: "https://i.pinimg.com/736x/9b/80/f6/9b80f613d125c9efd816d0be243aa1c0.jpg",
 };
