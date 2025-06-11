@@ -1,6 +1,7 @@
 import {
   buildCurveWithMarketCap,
   DynamicBondingCurveClient,
+  getMigrationMarketCap,
 } from "@meteora-ag/dynamic-bonding-curve-sdk";
 import bs58 from "bs58";
 import {
@@ -9,7 +10,7 @@ import {
   sendAndConfirmTransaction,
 } from "@solana/web3.js";
 import "dotenv/config";
-import { quoteMint, configKeyParams, tokenParams } from "../config";
+import { configKeyParams, quoteMint, TOTAL_TOKEN_SUPPLY } from "../examples/basic";
 
 
 console.log(configKeyParams);
@@ -19,6 +20,8 @@ if (!WALLET_PRIVATE_KEY) {
 }
 const walletSecretKey = bs58.decode(WALLET_PRIVATE_KEY);
 const wallet = Keypair.fromSecretKey(walletSecretKey);
+
+console.log(wallet.publicKey.toString());
 
 const connection = new Connection(
   process.env.RPC_URL || "https://api.mainnet-beta.solana.com"
@@ -30,9 +33,11 @@ async function main() {
   // Step 1: Create Config Key
   const configKey = Keypair.generate();
 
-    const curveConfig = buildCurveWithMarketCap(configKeyParams);
+  const initialMarketCap = 1_000_000;
+  const migrationQuoteThreshold = 5_000_000;
 
-  console.log(curveConfig);
+  const migrationMarketCap = getMigrationMarketCap(40, TOTAL_TOKEN_SUPPLY, migrationQuoteThreshold, 0);
+  const curveConfig = buildCurveWithMarketCap(configKeyParams(initialMarketCap, migrationMarketCap.toNumber()));
 
   const createConfigTx = await client.partner.createConfig({
     config: configKey.publicKey,
