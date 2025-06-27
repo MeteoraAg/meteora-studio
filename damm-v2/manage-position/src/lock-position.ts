@@ -26,12 +26,12 @@ async function getAndLockPosition() {
   // Variables to be configured
   //Example of locking position for 1 year
   const poolAddress = new PublicKey("");
-  const creatorWallet = new PublicKey("");
+  const positionOwner = new PublicKey("");
   const positionToLock = new PublicKey("");
   const lockPeriodInSeconds = 365 * 24 * 60 * 60; // 1 year in seconds
 
   //
-  console.log("Creator wallet:", creatorWallet.toBase58());
+  console.log("Position owner:", positionOwner.toBase58());
   console.log("Position to lock:", positionToLock.toBase58());
 
   const cpAmm = new CpAmm(connection);
@@ -43,7 +43,7 @@ async function getAndLockPosition() {
     // get position address for the user
     const userPositions = await cpAmm.getUserPositionByPool(
       poolAddress, // DAMM V2 pool address (can use deriveDAMMV2PoolAddress)
-      creatorWallet // user wallet address
+      positionOwner // user wallet address
     );
 
     if (userPositions.length === 0) {
@@ -137,8 +137,9 @@ async function getAndLockPosition() {
   }
 }
 
-// Execute the main function
-getAndLockPosition().catch((error) => {
-  console.error("Fatal error in main function:", error);
-  process.exit(1);
-});
+getAndLockPosition()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

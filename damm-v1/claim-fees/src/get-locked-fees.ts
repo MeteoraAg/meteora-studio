@@ -20,7 +20,6 @@ async function checkPositionFee() {
   const tokenAAddress = amm.vaultA.tokenMint.address.toString();
   const tokenBDecimals = amm.vaultB.tokenMint.decimals;
   const tokenBAddress = amm.vaultB.tokenMint.address.toString();
-  
   // get user's lock escrow info
   const lockEscrow = await amm.getUserLockEscrow(owner);
 
@@ -38,9 +37,9 @@ async function checkPositionFee() {
   }
   
   console.log("Unclaimed fees:");
-  console.log(`LP tokens: ${unclaimedFees.lp.toString() / 10 ** 6}`);
-  console.log(`${tokenAAddress}: ${unclaimedFees.tokenA.toString() / 10 ** tokenADecimals}`);
-  console.log(`${tokenBAddress}: ${unclaimedFees.tokenB.toString() / 10 ** tokenBDecimals}`);
+  console.log(`LP tokens: ${unclaimedFees.lp.toNumber() / 10 ** amm.decimals}`);
+  console.log(`${tokenAAddress}: ${unclaimedFees.tokenA.toNumber() / 10 ** tokenADecimals}`);
+  console.log(`${tokenBAddress}: ${unclaimedFees.tokenB.toNumber() / 10 ** tokenBDecimals}`);
 }
 
 checkPositionFee()

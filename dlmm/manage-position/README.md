@@ -1,50 +1,50 @@
-# Managing DLMM Position
+## DLMM Manage Position
 
 ## Scripts
 
+### Get Active Bin
 
-## Add Balanced Liquidity
+Gets the active bin ID and price for a DLMM pool.
+- [Get Active Bin](./src/get-active-bin.ts)
 
-Adds an balanced amount of liquidity into a DLMM position
+### Get Positions List
+
+Gets all positions for a specific user in a DLMM pool.
+- [Get Positions List](./src/get-positions-list.ts)
+
+### Add Balanced Liquidity
+
+Adds balanced amounts of liquidity to an existing DLMM position.
 - [Add Balanced Liquidity](./src/add-balanced-liquidity.ts)
 
-## Add Imbalanced Liquidity
+### Add Imbalanced Liquidity
 
-Adds an imbalanced amount of liquidity into a DLMM position
+Adds imbalanced amounts of liquidity to an existing DLMM position.
 - [Add Imbalanced Liquidity](./src/add-imbalanced-liquidity.ts)
-  
 
+## Usage
 
+1. Enter your parameters into the script
+	
+- [Get Active Bin](./src/get-active-bin.ts)
+Enter the pool address into `poolAddress`.
 
-## Getting Started
+- [Get Positions List](./src/get-positions-list.ts)
+Enter the pool address into `poolAddress` and the owner's public key into `owner`.
 
-1. Enter the pool address, the amount of liquidity you want to add, and the range
+- [Add Balanced Liquidity](./src/add-balanced-liquidity.ts)
+Enter the pool address into `poolAddress`, the amount of token X into `totalXAmount`, the existing position address into `existingPositionPubkey`, and configure the range with `minBinId` and `maxBinId`.
 
-Enter the pool address into `poolAddress` 
+- [Add Imbalanced Liquidity](./src/add-imbalanced-liquidity.ts)
+Enter the pool address into `poolAddress`, the amount of token X into `totalXAmount`, the amount of token Y into `totalYAmount`, the existing position address into `existingPositionPubkey`, and configure the range with `minBinId` and `maxBinId`.
 
-Enter the number of token X that is being added into
-`totalXAmount` and the decimal of token X into `X_DECIMALS`
-
-If creating imbalanced position, enter the number of token Y that is being added into
-`totalYAmount` and the decimal of token Y into `Y_DECIMALS`
-
-Enter the  existing positions address into `existingPositionPubkey` 
-
-Change the range in which the liquidity should be deposited by editing `minBinId` and `maxBinId`
-
-Edit `strategyType` to change the way liquidity is deposited
-
-
-2. Run the script to add liquidity
-
-To add balanced liquidity
-
-```bash
-npm run dlmm-add-balanced-liquidity
-```
-
-To add imbalanced liquidity
-
-```bash
-npm run dlmm-add-imbalanced-liquidity
-```
+2. Run the script
+	```bash
+	npm run <script-name>
+	
+	# Script names
+	# dlmm-get-active-bin
+	# dlmm-get-positions-list
+	# dlmm-add-balanced-liquidity
+	# dlmm-add-imbalanced-liquidity
+	```

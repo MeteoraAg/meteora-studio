@@ -1,81 +1,36 @@
-
 # Claim and check fees
-
-  
 
 This folder contains scripts for checking and claiming unclaimed fees from locked positions in a **Meteora DAMM V1 pool**.
 
-  
 ## Scripts
 
-## Check Unclaimed Fees
+### Check Unclaimed Fees
 
 Checks for any unclaimed fees by owner of a locked position
 - [Check Fees](./src/get-locked-fees.ts)
-  
 
-## Claim Unclaimed Fees
+### Claim Unclaimed Fees
 
 Claims any unclaimed fees from a locked position
-
 - [Claim Fees](./src/claim-locked-fees.ts)
 
-  
+## Usage
 
-## Getting Started
-
-1. Change directory to the `claim-fees` folder
-
-  
-
-  
-
-```bash
-cd  meteora-studio/damm/claim-fees
-```
-
-  
-2. Install dependencies
-
-```bash
-npm  install
-```
-  
-
-3. Copy `.env.example` file and add your private key and RPC URL into .env (RPC is optional but highly encouraged. Visit `https://www.helius.dev/` to get an RPC URL)
-
-Note that private key is not needed for get-lock-fees
-
-```bash
-cp  .env.example  .env
-```
-
-4. Edit the script
+1. Enter your parameters into the script
 
 - [Check Fees](./src/get-locked-fees.ts)
-Enter the public key of the owner of the position and the pool address into the [script](./src/get-locked-fees.ts) 
+Enter the pool address into `poolAddress` and the owner's public key into `owner`.
 
-  
 - [Claim Fees](./src/claim-locked-fees.ts)
-Enter the position's owners private key into the [env file](./../../.env) if the owner is not the payer
-Enter the receivers public key and pool address into the [script](./src/claim-locked-fees.ts) if receiver is not owner
+Enter the pool address into `poolAddress` and optionally enter the receiver's public key into `receiver` (defaults to owner if empty).
 
-  
+Note that private key is not needed for checking fees. For claiming fees, ensure your private key is set in the `.env` file.
 
-5. Run the scripts
-
-- To check the fees from a pool:
-
-```bash
-npm  run  get-locked-fees
-```
-
-  
-
-- To claim the fees:
-
-  
-
-```bash
-npm  run  claim-locked-fees
-```
+2. Run the script
+	```bash
+	npm run <script-name>
+	
+	# Script names
+	# damm-v1-get-locked-fees
+	# damm-v1-claim-locked-fees
+	```

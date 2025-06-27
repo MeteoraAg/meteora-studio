@@ -32,7 +32,9 @@ async function quickLaunch() {
         symbol: "PUMP",
         uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgk7EaZ4MxetCM1IB2B8z0MFJZg8IOn8AcMw&s",
     };
-    const configKey = new PublicKey('6ZjAF1MqbWZ4cCHGqpAMAZbUBi5KnAZDTDT6nXEA5iYZ') // TO BE CHANGED // Or use custom / partner config key 
+
+    const configKey = new PublicKey('6ZjAF1MqbWZ4cCHGqpAMAZbUBi5KnAZDTDT6nXEA5iYZ') // Or use custom / partner config key 
+    
     //
 
 

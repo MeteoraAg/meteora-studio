@@ -3,67 +3,60 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
-      "validate-env": "tsx validate-env.ts",
-
-      "damm-v1-create-constant-product-pool": "tsx damm-v1/create-pool/src/constant-product.ts",
-      "damm-v1-get-configs": "tsx damm-v1/create-pool/src/get-configs.ts",
-
-      "damm-v1-claim-locked-fees": "tsx damm-v1/claim-fees/src/claim-locked-fees.ts",
-      "damm-v1-get-locked-fees": "tsx damm-v1/claim-fees/src/get-locked-fees.ts",
-
-      "damm-v2-get-position-fees": "tsx damm-v2/claim-fees/src/get-position-fees.ts",
-      "damm-v2-claim-position-fee": "tsx damm-v2/claim-fees/src/claim-position-fee.ts",
-
-      "damm-v2-create-pool": "tsx damm-v2/create-pool/src/create-pool.ts",
-
-      "damm-v2-lock-position": "tsx damm-v2/manage-position/src/lock-position.ts",
-      "damm-v2-create-position": "tsx damm-v2/manage-position/src/create-position.ts",
-      "damm-v2-get-positions": "tsx damm-v2/manage-position/src/get-positions.ts",
-
-      "dlmm-create-balance-position": "tsx dlmm/create-position/src/create-balanced-position.ts",
-      "dlmm-create-imbalance-position": "tsx dlmm/create-position/src/create-imbalanced-position.ts",
-
-      "dlmm-get-active-bin": "tsx dlmm/get-position/src/get-active-bin.ts",
-      "dlmm-get-positions-list": "tsx dlmm/get-position/src/get-positions-list.ts",
-
-      "dlmm-add-balanced-liquidity": "tsx dlmm/manage-position/src/add-balanced-liquidity.ts",
-      "dlmm-add-imbalanced-liquidity": "tsx dlmm/manage-position/src/add-imbalanced-liquidity.ts",
-
-      "dbc-custom-launch": "tsx dbc/custom-launch/src/index.ts",
-
-      "dbc-quick-launch": "tsx dbc/quick-launch/src/index.ts",
-
-      "dbc-create-config": "tsx dbc/scripts/src/create-config.ts",
-      "dbc-create-partner-metadata": "tsx dbc/scripts/src/create-partner-metadata.ts",
-      "dbc-create-pool": "tsx dbc/scripts/src/create-pool.ts",
-      "dbc-migrate-to-damm-v1": "tsx dbc/scripts/src/migrate-to-damm-v1.ts",
-      "dbc-migrate-to-damm-v2": "tsx dbc/scripts/src/migrate-to-damm-v2.ts",
-      "dbc-simulate-curve": "tsx dbc/scripts/src/simulate-curve.ts",
-      "dbc-swap-buy": "tsx dbc/scripts/src/swap-buy.ts",
-      "dbc-swap-quote": "tsx dbc/scripts/src/swap-quote.ts"
-
+        "validate-env": "tsx validate-env.ts",
+        "damm-v1-create-constant-product-pool": "tsx damm-v1/create-pool/src/constant-product.ts",
+        "damm-v1-create-memecoin-pool": "tsx damm-v1/create-pool/src/memecoin-pool.ts",
+        "damm-v1-create-stable-pool": "tsx damm-v1/create-pool/src/stable-pool.ts",
+        "damm-v1-get-configs": "tsx damm-v1/create-pool/src/get-configs.ts",
+        "damm-v1-create-position": "tsx damm-v1/manage-position/src/create-position.ts",
+        "damm-v1-withdraw-liquidity": "tsx damm-v1/manage-position/src/withdraw-liquidity.ts",
+        "damm-v1-claim-locked-fees": "tsx damm-v1/claim-fees/src/claim-locked-fees.ts",
+        "damm-v1-get-locked-fees": "tsx damm-v1/claim-fees/src/get-locked-fees.ts",
+        "damm-v2-get-position-fees": "tsx damm-v2/claim-fees/src/get-position-fees.ts",
+        "damm-v2-claim-position-fees": "tsx damm-v2/claim-fees/src/claim-position-fees.ts",
+        "damm-v2-create-pool": "tsx damm-v2/create-pool/src/create-pool.ts",
+        "damm-v2-get-configs": "tsx damm-v2/create-pool/src/get-configs.ts",
+        "damm-v2-lock-position": "tsx damm-v2/manage-position/src/lock-position.ts",
+        "damm-v2-create-position": "tsx damm-v2/manage-position/src/create-position.ts",
+        "damm-v2-get-positions": "tsx damm-v2/manage-position/src/get-positions.ts",
+        "damm-v2-withdraw-liquidity": "tsx damm-v2/manage-position/src/withdraw-liquidity.ts",
+        "dlmm-create-balanced-position": "tsx dlmm/create-position/src/create-balanced-position.ts",
+        "dlmm-create-imbalanced-position": "tsx dlmm/create-position/src/create-imbalanced-position.ts",
+        "dlmm-get-active-bin": "tsx dlmm/manage-position/src/get-active-bin.ts",
+        "dlmm-get-positions-list": "tsx dlmm/manage-position/src/get-positions-list.ts",
+        "dlmm-add-balanced-liquidity": "tsx dlmm/manage-position/src/add-balanced-liquidity.ts",
+        "dlmm-add-imbalanced-liquidity": "tsx dlmm/manage-position/src/add-imbalanced-liquidity.ts",
+        "dbc-quick-launch": "tsx dbc/quick-launch/src/launch-pool.ts",
+        "dbc-create-config": "tsx dbc/create-config/src/create-config.ts",
+        "dbc-create-partner-metadata": "tsx dbc/create-config/src/create-partner-metadata.ts",
+        "dbc-simulate-curve": "tsx dbc/create-config/src/simulate-curve.ts",
+        "dbc-migrate-to-damm-v1": "tsx dbc/migrate-pool/src/migrate-to-damm-v1.ts",
+        "dbc-migrate-to-damm-v2": "tsx dbc/migrate-pool/src/migrate-to-damm-v2.ts",
+        "dbc-swap-buy": "tsx dbc/swap/src/swap-buy.ts",
+        "dbc-swap-quote": "tsx dbc/swap/src/swap-quote.ts"
     },
     "keywords": [],
     "author": "@dannweeeee",
     "license": "ISC",
     "description": "",
     "dependencies": {
-      "@coral-xyz/anchor": "^0.31.1",
-      "@mercurial-finance/dynamic-amm-sdk": "^1.1.23",
-      "@mercurial-finance/vault-sdk": "^2.2.1",
-      "@meteora-ag/cp-amm-sdk": "^1.0.10",
-      "@meteora-ag/dynamic-amm-sdk": "^1.3.5-rc.0",
-      "@meteora-ag/dynamic-bonding-curve-sdk": "^1.2.4",
-      "@meteora-ag/dlmm": "^1.4.7",
-      "@solana/spl-token": "^0.4.13",
-      "@solana/web3.js": "^1.98.2",
-      "bn.js": "^5.2.2",
-      "bs58": "^6.0.0",
-      "decimal.js": "^10.5.0",
-      "dotenv": "^16.5.0",
-      "jito-ts": "^4.2.0"
+        "@coral-xyz/anchor": "^0.31.1",
+        "@mercurial-finance/dynamic-amm-sdk": "^1.1.23",
+        "@mercurial-finance/vault-sdk": "^2.2.1",
+        "@meteora-ag/cp-amm-sdk": "^1.0.10",
+        "@meteora-ag/dlmm": "^1.4.7",
+        "@meteora-ag/dynamic-amm-sdk": "^1.3.5-rc.0",
+        "@meteora-ag/dynamic-bonding-curve-sdk": "^1.2.4",
+        "@solana/spl-token": "^0.4.13",
+        "@solana/web3.js": "^1.98.2",
+        "bn.js": "^5.2.2",
+        "bs58": "^6.0.0",
+        "date-fns": "^4.1.0",
+        "decimal.js": "^10.5.0",
+        "dotenv": "^16.5.0",
+        "jito-ts": "^4.2.0"
     },
     "devDependencies": {
-      "tsx": "^4.19.3"
+        "tsx": "^4.19.3"
     }
 }

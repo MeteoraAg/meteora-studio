@@ -7,6 +7,7 @@ This file defines conventions and boundaries for using Large Language Models (LL
 NEVER change, delete or generate a large chunk of code
 NEVER expose .env variables
 NEVER store sensitive data in the scripts itself
+NEVER create a new file unless explicitly told to
 
 Files to never edit:
  - .env
@@ -23,10 +24,13 @@ Files to never edit:
  - All scripts require an RPC. If RPC_URL is not provided, public mainnet URL will be used. However some scripts, especially DBC scripts may not fully work with public RPC
  - In each folder, there will be a README which includes instructions on how to use the script and how to edit them.
  - All variables that should be edited are marked out in the script
+ - 
 
 
 ## Getting Started
  - Read the main README and ensure that the user sets the repo up properly 
+ - The user needs to copy .env.example into .env by running `cp .env.example .env` and fill in their private key and RPC.
+ - The user also needs to install the dependancies by running `npm install`
  - Run `npm run validate-env` to ensure that the user has set up the environment file with valid RPC and Private Key and that there are sufficient funds in the wallet.
 
 

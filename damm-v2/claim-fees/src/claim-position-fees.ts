@@ -4,6 +4,8 @@ import {
   PublicKey,
   sendAndConfirmTransaction,
 } from "@solana/web3.js";
+import { NATIVE_MINT } from "@solana/spl-token";
+
 import {
   CpAmm,
   getTokenProgram,
@@ -33,6 +35,7 @@ async function checkAndClaimPositionFee() {
 
   // Variables to be configured
   const poolAddress = new PublicKey(""); 
+  const positionAddress = new PublicKey("");
   const receiverAddress = ""; // Enter receiver public key here. Leave empty to use payer as receiver.
   
   //
@@ -61,7 +64,7 @@ async function checkAndClaimPositionFee() {
     const tokenBData = await getMint(connection, tokenBMint);
 
     const positionState = await cpAmm.fetchPositionState(
-      userPositions[0].position
+      positionAddress
     );
     const unClaimedReward = getUnClaimReward(poolState, positionState);
 
@@ -69,8 +72,7 @@ async function checkAndClaimPositionFee() {
     console.log(tokenBMint.toBase58(), unClaimedReward.feeTokenB.toNumber() / 10 ** tokenBData.decimals);
 
     // Check if one of the tokens is SOL (wrapped SOL)
-    const isSolPool = tokenAMint.toBase58() === "So11111111111111111111111111111111111111112" || 
-                     tokenBMint.toBase58() === "So11111111111111111111111111111111111111112";
+    const isSolPool = tokenAMint === NATIVE_MINT || tokenBMint === NATIVE_MINT;
     
     let tempWSolAccount: Keypair | undefined;
     if (isSolPool) {
@@ -82,7 +84,7 @@ async function checkAndClaimPositionFee() {
       owner: payer.publicKey,
       receiver: receiver,
       pool: poolAddress, // DAMM V2 pool address (can use deriveDAMMV2PoolAddress)
-      position: userPositions[0].position,
+      position: positionAddress,
       positionNftAccount: userPositions[0].positionNftAccount,
       tokenAVault: poolState.tokenAVault,
       tokenBVault: poolState.tokenBVault,
@@ -125,7 +127,9 @@ async function checkAndClaimPositionFee() {
 }
 
 // Execute the main function
-checkAndClaimPositionFee().catch((error) => {
-  console.error("Fatal error in main function:", error);
-  process.exit(1);
-});
+checkAndClaimPositionFee()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

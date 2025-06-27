@@ -1,34 +1,72 @@
-
 # Creating DAMM V1 pool
 
-This folder contains the script to create a **Meteora DAMM V1 pool**.
+This folder contains scripts to create **Meteora DAMM V1 pools**.
 
-## Getting Started
+## Scripts
 
-1. Enter your pool details into [create pool script](./src/constant-product.ts)
+### Constant Product Pool
 
-Input the address of token A and B into `tokenAMint` and `tokenBMint`
+Creates a standard constant product AMM pool
+- [Create Constant Product Pool](./src/constant-product.ts)
 
-Enter your configuration address for the pool into `config`
+### Memecoin Pool
 
-Enter the amount of token A into `tokenAAmount` and amount of token B into `tokenBAmount`
+Creates a memecoin pool with optional M3M3 vault features
+- [Create Memecoin Pool](./src/memecoin-pool.ts)
 
-Enter the decimal of token A into `tokenADecimals` and decimal of token B into `tokenBDecimals`
-  
-Go to https://amm-v2.meteora.ag/swagger-ui/#/pools/get-all-pool-configs to get a config.
+### Stable Pool
 
-Note that you must have permission to use some addresses.
+Creates a stable pool for tokens with similar values (e.g, USDC and USDT)
+- [Create Stable Pool](./src/stable-pool.ts)
 
-To find a permissionless address, look for "pool_creator_authority": "11111111111111111111111111111111" in the config
+### Get Configurations
 
-Each configuration address can be used to create only one pool per unique token pair.
+Retrieves available pool configurations from the Meteora API
+- [Get Configurations](./src/get-configs.ts)
 
-Find another config key if the pair is common. e.g SOL-USDC
+## Usage
 
-Edit the amount you want to deposit into the pool
+1. Enter your parameters into the script
 
-2. Run the script to create the pool
+- [Create Constant Product Pool](./src/constant-product.ts)
+  - `tokenAMint`: Address of token A
+  - `tokenBMint`: Address of token B
+  - `config`: Pool configuration address
+  - `tokenAAmount`: Amount of token A to deposit
+  - `tokenBAmount`: Amount of token B to deposit
+  - `tokenADecimals`: Decimals of token A
+  - `tokenBDecimals`: Decimals of token B
 
-```bash
-npm  run  create-constant-product-pool
-```
+- [Create Memecoin Pool](./src/memecoin-pool.ts)
+  - `memecoinMint`: Memecoin mint address
+  - `tokenBMint`: Paired token mint address
+  - `memecoinAmount`: Memecoin amount to deposit
+  - `tokenBAmount`: Paired token amount to deposit
+  - `memecoinDecimals`: Memecoin decimals
+  - `tokenBDecimals`: Paired token decimals
+  - `config`: Configuration address
+
+- [Create Stable Pool](./src/stable-pool.ts)
+  - `tokenAMint`: Address of token A
+  - `tokenBMint`: Address of token B
+  - `tokenAAmount`: Amount of token A to deposit
+  - `tokenBAmount`: Amount of token B to deposit
+  - `tokenADecimal`: Decimals of token A
+  - `tokenBDecimal`: Decimals of token B
+  - `feeBps`: Base fee in Bps
+
+- [Get Configurations](./src/get-configs.ts)
+No parameters or private key needed. This script fetches all available configs and their data.
+Set `onlyPermissionless` to false to get all config keys instead of only the permissionless configs.
+
+
+2. Run the script
+	```bash
+	npm run <script-name>
+	
+	# Script names
+	# damm-v1-create-constant-product-pool
+	# damm-v1-create-memecoin-pool
+	# damm-v1-create-stable-pool
+	# damm-v1-get-configs
+	```

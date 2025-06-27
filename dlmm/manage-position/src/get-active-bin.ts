@@ -35,7 +35,6 @@ async function getActiveBin() {
   );
 
   console.log("Active bin ID:", activeBin.binId.toString());
-  console.log("Active bin price (lamports):", activeBinPriceLamport.toString());
   console.log("Active bin price (per token):", activeBinPricePerToken);
 
   return {
@@ -45,11 +44,9 @@ async function getActiveBin() {
   };
 }
 
-getActiveBin().catch((error) => {
-  console.error("Error fetching active bin:", error);
-  console.error(
-    "Error details:",
-    error instanceof Error ? error.message : String(error)
-  );
-  process.exit(1);
-});
+getActiveBin()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

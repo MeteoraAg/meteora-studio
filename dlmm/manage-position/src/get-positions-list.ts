@@ -13,7 +13,7 @@ async function getPositionsList() {
 
   // Variables to be configured
   const poolAddress = new PublicKey("");
-  const user = new PublicKey("");
+  const owner = new PublicKey("");
 
   //
 
@@ -23,9 +23,9 @@ async function getPositionsList() {
 
   try {
     // Get user positions
-    console.log("Fetching positions for user:", user.toBase58());
+    console.log("Fetching positions for user:", owner.toBase58());
     const { userPositions } = await dlmmPool.getPositionsByUserAndLbPair(
-      user
+      owner
     );
 
     if (userPositions.length === 0) {
@@ -69,7 +69,9 @@ async function getPositionsList() {
   }
 }
 
-getPositionsList().catch((error) => {
-  console.error("Fatal error in main function:", error);
-  process.exit(1);
-});
+getPositionsList()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

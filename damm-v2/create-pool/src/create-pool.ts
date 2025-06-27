@@ -42,7 +42,8 @@ async function createPool() {
     const tokenBDecimals = 6
     const tokenAAmount = 4
     const tokenBAmount = 1
-    const initialPrice = 0.25 
+    const initialPrice = 0.25
+    const lockInitialLiquidity = false
 
     //
   
@@ -87,9 +88,8 @@ async function createPool() {
       sqrtMaxPrice: configState.sqrtMaxPrice,
       tokenAInfo,
     });
-    console.log("liquidityDelta", liquidityDelta.toString());
+
     // create pool (included create first position)
-    console.log("create pool");
     const positionNft = Keypair.generate();
     const initPoolTx = await cpAmm.createPool({
       payer: payer.publicKey,
@@ -105,7 +105,7 @@ async function createPool() {
       activationPoint: null,
       tokenAProgram,
       tokenBProgram: TOKEN_PROGRAM_ID,
-      isLockLiquidity: true,
+      isLockLiquidity: lockInitialLiquidity,
     });
   
     const signature = await sendAndConfirmTransaction(
@@ -116,17 +116,13 @@ async function createPool() {
         commitment: "confirmed",
       }
     );
+    console.log("Pool Address", derivePoolAddress(config, tokenAMint, tokenBMint).toString());
+    console.log("Position Address", derivePositionAddress(positionNft.publicKey).toString());
+    console.log("Position NFT Address", positionNft.publicKey.toString());
+    console.log("Transaction Signature", signature);
+    console.log("Transaction: https://solscan.io/tx/" + signature);
   
-    console.log({
-      pool: derivePoolAddress(
-        config,
-        tokenAMint,
-        tokenBMint
-      ).toString(),
-      position: derivePositionAddress(positionNft.publicKey).toString(),
-      positionNft: positionNft.publicKey.toString(),
-      signature,
-    });
+
 }
 
 createPool()

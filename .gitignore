@@ -3,21 +3,11 @@ node_modules
 package-lock.json
 .env
 
-dbc/node_modules
-dbc/package-lock.json
-dbc/.env
 dbc/.DS_Store
 
-
-damm-v1/node_modules
-damm-v1/package-lock.json
 damm-v1/.DS_Store
 
-damm-v2/node_modules
-damm-v2/package-lock.json
 damm-v2/.DS_Store
 
-dlmm/node_modules
-dlmm/package-lock.json
 dlmm/.DS_Store
 

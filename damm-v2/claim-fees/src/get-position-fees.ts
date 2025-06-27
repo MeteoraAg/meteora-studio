@@ -21,7 +21,7 @@ async function checkPositionFee() {
   
     // Variables to be configured
     const poolAddress = new PublicKey("");
-    const owner = new PublicKey("");
+    const positionAddress = new PublicKey("");
 
     //
   
@@ -33,26 +33,23 @@ async function checkPositionFee() {
       const tokenBMint = poolState.tokenBMint;
       const tokenAData = await getMint(connection, tokenAMint);
       const tokenBData = await getMint(connection, tokenBMint);
-      const userPositions = await cpAmm.getUserPositionByPool(
-        poolAddress, // DAMM V2 pool address (can use deriveDAMMV2PoolAddress)
-        owner // user wallet address
+
+      const positionState = await cpAmm.fetchPositionState(
+        positionAddress
       );
-      if (userPositions.length === 0) {
-        console.log("No positions found for this user.");
-        return;
-      }
-      for (const position of userPositions) {
-        const positionState = await cpAmm.fetchPositionState(
-          position.position
-        );
-        console.log("Position Address:", position.position.toBase58());
-        const unClaimedReward = getUnClaimReward(poolState, positionState);
-        console.log(tokenAMint.toBase58(), unClaimedReward.feeTokenA.toNumber() / 10 ** tokenAData.decimals);
-        console.log(tokenBMint.toBase58(), unClaimedReward.feeTokenB.toNumber() / 10 ** tokenBData.decimals);
-      }
+      console.log("Position Address:", positionAddress.toBase58());
+      const unClaimedReward = getUnClaimReward(poolState, positionState);
+      console.log(tokenAMint.toBase58(), unClaimedReward.feeTokenA.toNumber() / 10 ** tokenAData.decimals);
+      console.log(tokenBMint.toBase58(), unClaimedReward.feeTokenB.toNumber() / 10 ** tokenBData.decimals);
+    
     } catch (error) {
       console.error("Error:", error);
     }
 }
 
-checkPositionFee();
+checkPositionFee()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

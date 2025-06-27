@@ -28,7 +28,7 @@ async function createConstantProductPool() {
   const tokenBAmount = 1500;
   const tokenADecimals = 9;
   const tokenBDecimals = 6;
-  const config = new PublicKey("");
+  const config = new PublicKey(""); // use get-config.ts to get a config
 
   //
   try {
@@ -124,8 +124,10 @@ async function createConstantProductPool() {
   }
 }
 
-// Execute the main function
-createConstantProductPool().catch((error) => {
-  console.error("Fatal error in main function:", error);
+createConstantProductPool()
+  .then(() => process.exit(0))
+  .catch((error) => {
+  console.error(error);
   process.exit(1);
-});
+  });
+

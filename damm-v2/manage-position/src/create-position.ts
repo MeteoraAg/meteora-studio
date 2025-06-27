@@ -41,9 +41,8 @@ async function createPosition() {
     const tokenADecimals = 9;
     const tokenBAmount = 15; 
     const tokenBDecimals = 6;
-    
-    
-  
+
+    //
 
     const cpAmm = new CpAmm(connection);
   
@@ -76,11 +75,10 @@ async function createPosition() {
       new BN(10 ** tokenBDecimals)
     );
   
-    // create second position
-    console.log("creating position and locking");
+    // creates position
+    console.log("Creating position...");
   
     const positionNft = Keypair.generate();
-    const position = derivePositionAddress(positionNft.publicKey);
   
     const liquidityDelta = cpAmm.getLiquidityDelta({
       maxAmountTokenA: addLidTokenAAmount,
@@ -91,7 +89,7 @@ async function createPosition() {
       tokenAInfo,
     });
   
-    const createSecondPositionTx = await cpAmm.createPositionAndAddLiquidity({
+    const createPositionTx = await cpAmm.createPositionAndAddLiquidity({
       owner: payer.publicKey,
       pool: poolAddress,
       positionNft: positionNft.publicKey,
@@ -105,32 +103,9 @@ async function createPosition() {
       tokenAProgram,
       tokenBProgram: TOKEN_PROGRAM_ID,
     });
+
   
-    const permanentLockSecondPositionIx = await cpAmm.permanentLockPosition({
-      owner: payer.publicKey,
-      position,
-      positionNftAccount: derivePositionNftAccount(positionNft.publicKey),
-      pool: poolAddress,
-      unlockedLiquidity: liquidityDelta,
-    });
-  
-    // create second position and permanent lock
-    const transaction = new Transaction();
-    transaction.add(...createSecondPositionTx.instructions);
-    transaction.add(...permanentLockSecondPositionIx.instructions);
-  
-    transaction.feePayer = payer.publicKey;
-    transaction.recentBlockhash = (
-      await connection.getLatestBlockhash()
-    ).blockhash;
-    transaction.sign(...[payer, positionNft]);
-  
-    const signature = await sendAndConfirmTransaction(
-      connection,
-      transaction,
-      [payer, positionNft],
-      { commitment: "confirmed" }
-    );
+    const signature = await sendAndConfirmTransaction(connection, createPositionTx, [payer, positionNft], { commitment: "confirmed" });
   
     console.log({
       position: derivePositionAddress(positionNft.publicKey).toString(),
@@ -145,3 +120,4 @@ createPosition()
     console.error(error);
     process.exit(1);
 });
+

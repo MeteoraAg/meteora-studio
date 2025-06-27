@@ -43,7 +43,7 @@ async function createConfig() {
 
   const feeClaimer = new PublicKey(process.env.PARTNER_PRIVATE_KEY || "");
 
-  const curveConfig = buildCurveWithMarketCap({
+  const configKeyParams = buildCurveWithMarketCap({
     totalTokenSupply: 1000000000,
     initialMarketCap: 20,
     migrationMarketCap: 320,
@@ -84,7 +84,7 @@ async function createConfig() {
     },
   });
 
-  console.log("curve config", curveConfig);
+  console.log("curve config", configKeyParams);
 
   try {
     const client = new DynamicBondingCurveClient(connection, "confirmed");
@@ -95,7 +95,7 @@ async function createConfig() {
       leftoverReceiver: feeClaimer,
       quoteMint: NATIVE_MINT,
       payer: payer.publicKey,
-      ...curveConfig,
+      ...configKeyParams,
     });
 
     const { blockhash } = await connection.getLatestBlockhash("confirmed");

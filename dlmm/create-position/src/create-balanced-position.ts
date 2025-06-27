@@ -20,6 +20,7 @@ const connection = new Connection(
 
 async function createBalancePosition() {
   // Variables to be configured
+  // Example of creating a balanced position on SOL - USDC pool with 0.1 SOL
   const poolAddress = new PublicKey("5rCf1DM8LjKTw4YqhnoLcngyZYeNnQqztScTogYHAS6");
   const XAmount = 0.1
   const XDecimals = 9
@@ -104,7 +105,9 @@ async function createBalancePosition() {
   }
 }
 
-createBalancePosition().catch((error) => {
-  console.error("Fatal error in main function:", error);
-  process.exit(1);
+createBalancePosition()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
 });

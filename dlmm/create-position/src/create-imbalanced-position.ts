@@ -94,7 +94,9 @@ async function createImbalancePosition() {
   }
 }
 
-createImbalancePosition().catch((error) => {
-  console.error("Fatal error in main function:", error);
-  process.exit(1);
-});
+createImbalancePosition()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
