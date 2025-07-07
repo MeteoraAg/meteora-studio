@@ -29,6 +29,7 @@ const connection = new Connection(
 async function swapBuy() {
 
     // Variables to be configured
+    const config = new PublicKey('dpc_config_key');
     const baseMint = new PublicKey('')
     const amountIn = 0.01;
     const amountInDecimals = 9;
@@ -41,16 +42,11 @@ async function swapBuy() {
     try{
         console.log("Payer public key:", payer.publicKey.toBase58());
         const client = new DynamicBondingCurveClient(connection, "confirmed");
-        const virtualPoolState = await client.state.getPoolByBaseMint(baseMint);
+
+        const virtualPoolState = await client.state.getPoolConfig(config);
         if (!virtualPoolState) {
-        throw new Error(`Pool not found for base mint: ${baseMint.toString()}`);
+            throw new Error(`Pool not found for config: ${config.toString()}`);
         }
-
-        const config = virtualPoolState.account.config;
-        if (!config) {
-        throw new Error("Pool config is undefined");
-        }
-
 
         const poolAddress = deriveDbcPoolAddress(NATIVE_MINT, baseMint, config)
         console.log('Derived pool address:', poolAddress.toString())
