@@ -1,0 +1,27 @@
+{
+  "rpcUrl": "https://api.mainnet-beta.solana.com",
+  "dryRun": true,
+  "keypairFilePath": "keypair.json",
+  "computeUnitPriceMicroLamports": 100000,
+  "baseMint": "6GCmN8XWQTgswV9eG86VfM4YBfCHVxK5TQ4MgazKQ9QH",
+  "quoteSymbol": "SOL",
+  "dlmm": {
+    "binStep": 100,
+    "feeBps": 100,
+    "initialPrice": 0.003393,
+    "activationType": "timestamp",
+    "activationPoint": 1734440400,
+    "priceRounding": "up",
+    "hasAlphaVault": true
+  },
+  "alphaVault": {
+    "poolType": "dlmm",
+    "alphaVaultType": "prorata",
+    "depositingPoint": 1734433200,
+    "startVestingPoint": 1734451200,
+    "endVestingPoint": 1734537600,
+    "maxBuyingCap": 100,
+    "escrowFee": 0,
+    "whitelistMode": "permissionless"
+  }
+}

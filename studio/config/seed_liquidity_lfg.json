@@ -1,0 +1,20 @@
+{
+  "rpcUrl": "https://api.mainnet-beta.solana.com",
+  "dryRun": true,
+  "keypairFilePath": "keypair.json",
+  "computeUnitPriceMicroLamports": 100000,
+  "baseMint": "TNSRxcUxoT9xBG3de7PiJyTDYu7kskLqcpddxnEJAS6",
+  "quoteSymbol": "SOL",
+  "lfgSeedLiquidity": {
+    "minPrice": 0.003393,
+    "maxPrice": 0.004393,
+    "seedAmount": "200000",
+    "curvature": 0.6,
+    "basePositionKeypairFilepath": "keypair.json",
+    "operatorKeypairFilepath": "keypair.json",
+    "positionOwner": "2vqFyczcehkR7hTeZjEkiN5jvYnFXuFRinovqR2gakSb",
+    "feeOwner": "2vqFyczcehkR7hTeZjEkiN5jvYnFXuFRinovqR2gakSb",
+    "lockReleasePoint": 0,
+    "seedTokenXToPositionOwner": true
+  }
+}

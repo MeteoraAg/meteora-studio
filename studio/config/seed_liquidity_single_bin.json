@@ -1,0 +1,28 @@
+{
+  "rpcUrl": "https://api.mainnet-beta.solana.com",
+  "dryRun": false,
+  "keypairFilePath": "keypair.json",
+  "computeUnitPriceMicroLamports": 100000,
+  "baseMint": "4U8QL1vLicwo1jhU4mXEPdvvtdpCJko17FvTueNTc773",
+  "quoteSymbol": "SOL",
+  "dlmm": {
+    "binStep": 80,
+    "feeBps": 250,
+    "initialPrice": 0.25,
+    "activationType": "timestamp",
+    "activationPoint": 1734537600,
+    "priceRounding": "up",
+    "hasAlphaVault": true
+  },
+  "singleBinSeedLiquidity": {
+    "price": 0.25,
+    "priceRounding": "up",
+    "seedAmount": "100000",
+    "basePositionKeypairFilepath": "keypair.json",
+    "operatorKeypairFilepath": "keypair.json",
+    "positionOwner": "2vqFyczcehkR7hTeZjEkiN5jvYnFXuFRinovqR2gakSb",
+    "feeOwner": "2vqFyczcehkR7hTeZjEkiN5jvYnFXuFRinovqR2gakSb",
+    "lockReleasePoint": 0,
+    "seedTokenXToPositionOwner": true
+  }
+}

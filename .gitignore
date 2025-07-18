@@ -12,6 +12,7 @@ build/
 dist/
 .next/
 out/
+test-ledger/
 
 # Misc
 .DS_Store

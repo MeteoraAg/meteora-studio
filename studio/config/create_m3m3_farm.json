@@ -1,0 +1,22 @@
+{
+  "rpcUrl": "https://api.mainnet-beta.solana.com",
+  "dryRun": false,
+  "keypairFilePath": "keypair.json",
+  "computeUnitPriceMicroLamports": 100000,
+  "baseMint": "FvxPZWBViVsmzS11MGi3ybNGjTKChwdfXU3UWopBujTn",
+  "quoteSymbol": "SOL",
+  "m3m3": {
+    "topListLength": 100,
+    "unstakeLockDurationSecs": 25200,
+    "secondsToFullUnlock": 86400,
+    "startFeeDistributeTimestamp": 1737590400
+  },
+  "lockLiquidity": {
+    "allocations": [
+      {
+        "percentage": 100,
+        "address": "D2Yt1jtjjk6cPiwYKs6krtbjfjjYiQmYWbFtTrgL2WR2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "rpcUrl": "https://api.mainnet-beta.solana.com",
+  "dryRun": true,
+  "keypairFilePath": "keypair.json",
+  "computeUnitPriceMicroLamports": 100000,
+  "baseMint": "5e3ACTUsKDXgwLjnsjELtohL3Wv2tei7Nu6ZS6UeMj7w",
+  "quoteMint": "8QEgDzA1XBcX7WGHvKaBT1eZGST6jmZBqW6B8weEoUw5",
+  "dlmm": {
+    "binStep": 400,
+    "feeBps": 200,
+    "initialPrice": 0.0000017,
+    "activationType": "slot",
+    "activationPoint": null,
+    "priceRounding": "up",
+    "hasAlphaVault": false
+  }
+}

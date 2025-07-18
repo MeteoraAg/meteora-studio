@@ -1,0 +1,28 @@
+{
+    "rpcUrl": "https://api.devnet.solana.com",
+    "dryRun": true,
+    "keypairFilePath": "id.json",
+    "computeUnitPriceMicroLamports": 100000,
+    "baseMint": "HyKWQm6D9HK9V5zpigaSga7UU9Uie7952cesGeven3ke",
+    "quoteSymbol": "SOL",
+    "dynamicAmmV2": {
+        "creator": "4JTYKJAyS7eAXQRSxvMbmqgf6ajf3LR9JrAXpVEcww2q",
+        "baseAmount": 1000,
+        "quoteAmount": null,
+        "initPrice": 10,
+        "maxPrice": null,
+        "poolFees": {
+            "maxBaseFeeBps": 5000,
+            "minBaseFeeBps": 100,
+            "numberOfPeriod": 10,
+            "totalDuration": 600,
+            "feeSchedulerMode": 0,
+            "useDynamicFee": false,
+            "dynamicFeeConfig": null
+        },
+        "hasAlphaVault": false,
+        "collectFeeMode": 0,
+        "activationType": "timestamp",
+        "activationPoint": null
+    }
+  }

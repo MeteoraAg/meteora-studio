@@ -1,0 +1,33 @@
+{
+	"rpcUrl": "https://api.mainnet-beta.solana.com",
+	"dryRun": true,
+	"keypairFilePath": "keypair.json",
+	"computeUnitPriceMicroLamports": 100000,
+	"baseMint": "435W1phWFsPxweD87j47cFrZzy3Jp2n9GQrZVoDuAFq8",
+	"quoteSymbol": "SOL",
+	"dynamicAmm": {
+		"baseAmount": "100",
+		"quoteAmount": "0.001",
+		"tradeFeeNumerator": 2500,
+		"activationType": "timestamp",
+		"activationPoint": 1750089600,
+		"hasAlphaVault": true
+	},
+	"alphaVault": {
+		"poolType": "dynamic",
+		"alphaVaultType": "prorata",
+		"depositingPoint": 1733547099,
+		"startVestingPoint": 1750089601,
+		"endVestingPoint": 1750089601,
+		"maxBuyingCap": 100,
+		"escrowFee": 0,
+		"whitelistMode": "permissioned_with_merkle_proof",
+		"whitelistFilepath": "./config/whitelist_wallet.csv",
+		"merkleProofBaseUrl": "https://example.workers.dev/",
+		"cloudflareKvProofUpload": {
+			"kvNamespaceId": "",
+			"accountId": "",
+			"apiKey": ""
+		}
+	}
+}
